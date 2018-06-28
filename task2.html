@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task2</title>
+</head>
+<body>
+	<h1>task2</h1>
+	<span>当前日期与时间(格式2）:</span><input type="text" style="width:300px;margin-left:30px;"id="time2"/>
+	<button onclick="int=window.clearInterval(int)">Stop interval</button>
+</body>
+<script>
+	
+	function getday(d) {
+		var day;
+		day=d.getDay();
+		switch(day){
+			case 0:
+				sday="Sunday";
+				break;
+			case 1:
+				sday="Monday";
+				break;
+			case 2:
+				sday="Tuesday";
+				break;
+			case 3:
+				sday="Wednesday";
+				break;
+			case 4:
+				sday="Thursday";
+				break;
+			case 5:
+				sday="Friday";
+				break;
+			case 6:
+				sday="Saturday";
+				break;
+			default:
+				break;
+		}
+		return sday;
+	}
+	function supplement(a) {
+		var re;
+		if(a<10){
+			re="0"+a;
+		}
+		else{
+			re=a.toString();
+		}
+		return re;
+	}	
+	function complete2() {
+		var d=new Date();
+		var year=d.getFullYear();
+		var month=d.getMonth()+1;
+		var date=d.getDate();
+		var hour=d.getHours();
+		var minute=d.getMinutes();
+		var second=d.getSeconds();
+		if(hour<12){
+			flag="AM";
+		}else{
+			flag="PM";
+		}
+		var time=year+"-"+supplement(month)+"-"+supplement(date)+"-"+getday(d)+" "+supplement(hour)+":"+supplement(minute)+":"+supplement(second)+" "+flag;
+		console.log(time);
+		document.getElementById('time2').value=time;
+	}
+	var int=self.setInterval("complete2()",1000);
+</script>
+</html>

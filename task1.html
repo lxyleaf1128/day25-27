@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task1</title>
+</head>
+<body>
+	<h1>task1</h1>
+	<span>当前日期与时间（格式1）:</span><input type="text" style="width:300px;margin-left:30px;"id="time1"/>
+	<button onclick="int=window.clearInterval(int)">Stop interval</button>
+</body>
+<script>
+	function getday(d) {
+		var day;
+		day=d.getDay();
+		switch(day){
+			case 0:
+				sday="星期日";
+				break;
+			case 1:
+				sday="星期一";
+				break;
+			case 2:
+				sday="星期二";
+				break;
+			case 3:
+				sday="星期三";
+				break;
+			case 4:
+				sday="星期四";
+				break;
+			case 5:
+				sday="星期五";
+				break;
+			case 6:
+				sday="星期六";
+				break;
+			default:
+				break;
+		}
+		return sday;
+	}
+	function supplement(a) {
+		var re;
+		if(a<10){
+			re="0"+a;
+		}
+		else{
+			re=a.toString();
+		}
+		return re;
+	}
+	function complete1() {
+		var d=new Date();
+		var year=d.getFullYear();
+		var month=d.getMonth()+1;
+		var date=d.getDate();
+		var hour=d.getHours();
+		var minute=d.getMinutes();
+		var second=d.getSeconds();
+		var time=year+"年"+supplement(month)+"月"+supplement(date)+"日"+getday(d)+" "+supplement(hour)+":"+supplement(minute)+":"+supplement(second);
+		console.log(time);
+		document.getElementById('time1').value=time;
+	}
+
+	var int=self.setInterval("complete1()",1000);
+</script>
+</html>
